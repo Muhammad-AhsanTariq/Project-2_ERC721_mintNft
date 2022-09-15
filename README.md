@@ -41,28 +41,28 @@ If the platform limit is reached admins cannot mint NFTs.
 
 ## What we need as deliveries:
 
-NFTs will be reserved with respect to limit i.e. 1 address can mint up to 5 NFTs.
+1. NFTs will be reserved with respect to limit i.e. 1 address can mint up to 5 NFTs.
 
-Contract will also have whitelisted admins that can be added or removed by the owner of the contract only.
+2. Contract will also have whitelisted admins that can be added or removed by the owner of the contract only.
 
-Default Base URI will be set or updated by whitelisted admins only.
+3.Default Base URI will be set or updated by whitelisted admins only.
 
-Contract will have a pause/un-pause minting feature. Minting status can be changed by the owner of the contract.
+4. Contract will have a pause/un-pause minting feature. Minting status can be changed by the owner of the contract.
 
-Token Ids will not be managed within the contract. It will be passed as a parameter in the minting function.
+5. Token Ids will not be managed within the contract. It will be passed as a parameter in the minting function.
 
-Contract stores the following attributes of NFTs:
+6. Contract stores the following attributes of NFTs:
 
 - ID
 - Name
 - Metadata hash
 
-Whitelisted addresses can mint as public users. We’ll define a limit for each user that will include whitelisted and public minting.
+7. Whitelisted addresses can mint as public users. We’ll define a limit for each user that will include whitelisted and public minting.
 
-Whitelisted admins cannot mint NFTs if the minting status is paused.
+8. Whitelisted admins cannot mint NFTs if the minting status is paused.
 
-Public users cannot mint NFTs if public sales are not active.
+9. Public users cannot mint NFTs if public sales are not active.
 
-We have reserved a limit for each Admin, Whitelisted user, and public.
+10. We have reserved a limit for each Admin, Whitelisted user, and public.
 
-Let's say we have a total minting limit is 100. In which you reserved 10 for admins and 50 for whitelist users. The remaining limit is 40. So 40 limit will be reserved for public sales. If whitelist users only mint 40 NFTs out of 50 remaining 10 NFTs will be added to the public limit if you are active the public sales. Furthermore, when you activate the public sale then whitelist users cannot mint the NFTs.   
+11. Let's say we have a total minting limit is 100. In which you reserved 10 for admins and 50 for whitelist users. The remaining limit is 40. So 40 limit will be reserved for public sales. If whitelist users only mint 40 NFTs out of 50 remaining 10 NFTs will be added to the public limit if you are active the public sales. Furthermore, when you activate the public sale then whitelist users cannot mint the NFTs.   
