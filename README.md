@@ -45,7 +45,7 @@ If the platform limit is reached admins cannot mint NFTs.
 
 2. Contract will also have whitelisted admins that can be added or removed by the owner of the contract only.
 
-3.Default Base URI will be set or updated by whitelisted admins only.
+3. Default Base URI will be set or updated by whitelisted admins only.
 
 4. Contract will have a pause/un-pause minting feature. Minting status can be changed by the owner of the contract.
 
