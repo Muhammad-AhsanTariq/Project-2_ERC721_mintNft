@@ -3,8 +3,6 @@ NFT Smart-Contract to mint NFTs
 
 **NFT Contract Requirements**
 
-### NFT Contract Requirements
-
 ERC-721 Compliance Compatible
 
 ### Users will be
@@ -67,5 +65,4 @@ Public users cannot mint NFTs if public sales are not active.
 
 We have reserved a limit for each Admin, Whitelisted user, and public.
 
-(This functionality is not yet implemented in the contract but will be in the future) Let's say we have a total minting limit is 100. In which we reserved 10 for admins and 50 for whitelisted users. The remaining limit is 40. So 40 limit will be reserved for public sales. If whitelisted users only mint 40 NFTs out of 50 remaining 10 NFTs will be added to the public limit if the public sale is still active.
-Furthermore, when you activate the public sale then whitelist users cannot mint the NFTs.
+Let's say we have a total minting limit is 100. In which you reserved 10 for admins and 50 for whitelist users. The remaining limit is 40. So 40 limit will be reserved for public sales. If whitelist users only mint 40 NFTs out of 50 remaining 10 NFTs will be added to the public limit if you are active the public sales. Furthermore, when you activate the public sale then whitelist users cannot mint the NFTs.   
