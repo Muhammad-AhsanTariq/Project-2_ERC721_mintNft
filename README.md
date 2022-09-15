@@ -1,4 +1,4 @@
-# ERC721_mintSaleContract
+# ERC721_mintNFTContract
 NFT Smart-Contract to mint NFTs
 
 **NFT Contract Requirements**
@@ -7,19 +7,19 @@ ERC-721 Compliance Compatible
 
 ### Users will be
 
-Whitelisted users
+- Whitelisted users
 
-Public users
+- Public users
 
 ### NFT  Minting Limit
 
-Total Minting Limit
+- Total Minting Limit
 
-Whitelisted users Minting Limit
+- Whitelisted users Minting Limit
 
-Public users Minting Limit
+- Public users Minting Limit
 
-Platform Minting (admin) Limit
+- Platform Minting (admin) Limit
             
 - Whitelist User Minting:
 
