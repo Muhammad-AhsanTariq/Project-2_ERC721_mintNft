@@ -352,6 +352,7 @@
     /* Requirements:
     * Only owner can call this function.
        @param_stauts to start or end sale .
+       PublicSale bool=true (remaining mintLimit of whiteListed users transfer to publicLimit.)
     */
     
     function setPuclicSale(bool _status) 
