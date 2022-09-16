@@ -1,9 +1,9 @@
 # ERC721_mintNFTContract
-- NFT Smart-Contract to mint NFTs
+**NFT Smart-Contract to mint NFTs**
 
 **NFT Contract Requirements**
 
-ERC-721 Compliance Compatible
+- ERC-721 Compliance Compatible
 
 ### Users will be
 
