@@ -11,7 +11,7 @@
 
     contract ChimpsNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Pausable, Ownable {
     
-    //State variables
+    //state variables
 
     uint public totalLimit = 100;
     uint public mintLimit = 90;
@@ -39,16 +39,15 @@
     mapping(address => uint) public perAddressMinting;
     mapping(address => bool) public whiteListedAdmins;
 
-    error perAddressLimit(string);
-    error totalMintLimit(string);
-    error notWhitelistedAdmin(string);
-    error notWhitelistedUser(string);
-    error whitelistedUserLimit(string);
-    error publicSaleStatus(string);
-    error publicMintLimit(string);
-    error platformMintLimit(string);
+    error perAddressMintLimitReached();
+    error totalMintLimitReached();
+    error notWhiteListedAdmin();
+    error notWhiteListedUser();
+    error whiteListedUserMintLimitReached();
+    error publicMintLimitReached();
+    error platformMintLimitReached();
     error MintingDisabled();
-  
+    error publicSaleStatus(string);
    
     event AddedWhitelistAdmin(
         address whitelistedAddress,
@@ -146,11 +145,11 @@
             mintedNFTs += 1;
               }
         else {
-                revert perAddressLimit("Minting limit of 5 NFTs per address is reached");
+                revert perAddressMintLimitReached();
             }
         }
         else {
-                revert totalMintLimit("Total minting limit is reached");
+                revert totalMintLimitReached();
         }
     }
     
@@ -174,11 +173,11 @@
             whitelistedMintedNFTs += 1;
             }
         else {
-                revert notWhitelistedUser("Not a whitelisted user");
+                revert notWhiteListedUser();
             }
         }
         else {
-            revert whitelistedUserLimit("Whitelisted user minting limit is reached");
+            revert whiteListedUserMintLimitReached();
         }
     }
     
@@ -202,7 +201,7 @@
             publicMintedNFTs += 1;
             }
         else {
-            revert publicMintLimit("Public minting limit is reached");
+            revert publicMintLimitReached();
         }
     }
 
@@ -222,11 +221,11 @@
         pltformMintindNFTs += 1;
     }
     else {
-            revert notWhitelistedAdmin("Not a whitelisted admin");
+            revert notWhiteListedAdmin();
             }
         }
     else {
-            revert platformMintLimit("Platform minting limit is reached");
+            revert platformMintLimitReached();
         }
     }
     
@@ -259,7 +258,7 @@
             emit updateUri(msg.sender, _uri);
         }
         else {
-            revert notWhitelistedAdmin("Not a whitelisted admin");
+            revert notWhiteListedAdmin();
         }
     }
 
@@ -341,7 +340,7 @@
             emit WhitelistedUser(msg.sender, _address, _status);
         }
         else {
-            revert notWhitelistedAdmin("Not a whitelisted admin");
+            revert notWhiteListedAdmin();
         }
     }
 
