@@ -22,7 +22,7 @@
     uint public whitelistedMintedNFTs;
     uint public pltformMintindNFTs;
     uint public publicMintedNFTs;
-    uint public whiteMintBalance; 
+    uint public whiteNonMintBalance; 
     string public baseURI;
     bool public publicSale;
     bool public mintDisabled;
@@ -84,7 +84,7 @@
          baseURI= "https://gateway.pinata.cloud/ipfs/";
     }        
   
-    // mintStatusCheck() to stop miniting functions
+    //* mintStatusCheck() to stop miniting functions
 
     modifier mintStatusCheck() {
          if (mintDisabled == true) {
@@ -93,7 +93,7 @@
         _;
     }
     
-    //preSaleMint() and publicSaleActive() checks represent start or end preSale.
+    //* preSaleCheck() and publicSaleCheck() checks represent start or end preSale.
 
     modifier preSaleCheck() {
           if (publicSale == true){
@@ -109,7 +109,7 @@
         _;
     }
     
-    // pause() or unpause() All contract functions can be paused by contract owner. 
+    //* pause() or unpause() All contract functions can be paused by contract owner. 
 
     function pause() 
       public 
@@ -123,15 +123,17 @@
       _unpause();
     }
 
-    //NFTs will be reserved with respect to limit i.e. 1 address can mint up to 5 NFTs.
-    
+    /*NFTs will be reserved with respect to limit i.e. 1 address can mint up to 5 NFTs.
+    *toalLimtit=100
+    */
+
     function safeMint(
         address to,
         uint256 nftId,
         string memory name, 
         string memory _hash
         ) private 
-        onlyOwner mintStatusCheck{
+         mintStatusCheck{
         require(!paused(), "Pausable: paused");
 
         if(mintedNFTs < totalLimit) {
@@ -139,7 +141,6 @@
            _safeMint(to, nftId);
            _setTokenURI(nftId, string(abi.encode(baseURI, _hash)));
             nftData[nftId]= nftInfo(nftId, name, _hash); 
-            whitelistedMintedNFTs += 1;
             perAddressMinting[msg.sender] += 1;
             mintedNFTs += 1;
               }
@@ -153,9 +154,10 @@
     }
     
     /*Only WhiteListed users can mint whiteListedMinting
-    when publicSale active whitelist users cannot mint the NFTs. 
-    Limit 50
+    * when publicSale active whitelist users cannot mint the NFTs. 
+    * WhiteListed user Limit 50
     */
+
     function whitelistedMinting(
         address to,
         uint  nftId, 
@@ -165,11 +167,11 @@
         preSaleCheck
         mintStatusCheck {
         require(!paused(), "Pausable: paused");
+
         if (whitelistedMintedNFTs < whiteListedLimit) {
         if (whiteListedUsers[msg.sender]) {
             safeMint(to, nftId, name, _hash);
             whitelistedMintedNFTs += 1;
-            nftData[nftId]= nftInfo(nftId, name, _hash); 
             }
         else {
                 revert notWhitelistedUser("Not a whitelisted user");
@@ -181,9 +183,9 @@
     }
     
     /* Whitelist addresses can be mint as public.
-    Public users cannot mint NFTs if public sales are not active.
-    Remaining NFTs of whiteListed users will be added to the public limit if you are active the public sales 
-    PublicLimit 40
+    * Public users cannot mint NFTs if public sales are not active.
+    * Remaining NFTs of whiteListed users will be added to the public limit if you are active the public sales. 
+    * PublicLimit 40.
     */
 
     function publicMinting(
@@ -197,17 +199,15 @@
         require(!paused(), "Pausable: paused");     
         
         if (publicMintedNFTs < publicLimit) {
-            safeMint(to, nftId, name, _hash);
+            safeMint(to, nftId, name, _hash); 
             publicMintedNFTs += 1;
-            nftData[nftId]= nftInfo(nftId, name, _hash); 
             }
-    
         else {
             revert publicMintLimit("Public minting limit is reached");
         }
     }
 
-    //platFormMinting only done by whiteListedAdmins in limit of 10.
+    //* platFormMinting only done by whiteListedAdmins in limit of 10.
 
     function platFormMinting(
         address to, 
@@ -220,10 +220,8 @@
         
     if(pltformMintindNFTs <= platformLimit) {
     if(whiteListedAdmins[msg.sender]) {
-        safeMint(to, nftId, name, _hash);
-        nftData[nftId]= nftInfo(nftId, name, _hash);  
+        safeMint(to, nftId, name, _hash); 
         pltformMintindNFTs += 1;
-        nftData[nftId]= nftInfo(nftId, name, _hash); 
     }
     else {
             revert notWhitelistedAdmin("Not a whitelisted admin");
@@ -234,7 +232,7 @@
         }
     }
     
-    //@param_status whitelist admins that can be only add or remove by the owner of the contract.
+    //* @param_status whitelist admins that can be only add or remove by the owner of the contract.
 
     function addWhiteListedAdmin(
         address _address, 
@@ -247,8 +245,8 @@
         emit addAdminEvent(_address, _status);
     }
     
-      /**
-     * @dev setBaseUri is used to set BaseURI.
+     /**
+     * @dev setBaseUri is used to update BaseURI.
      * Requirement:
      * - This function can only called by owner of whiteListedAdmins
      */
@@ -332,7 +330,7 @@
       mintDisabled = _state;
     }
 
-    // addWhitelistedUser to add or remove User to WhiteListedMint 
+    //* addWhitelistedUser to add or remove User to WhiteListedMint 
 
     function addWhitelistedUser(
        address _address, 
@@ -351,8 +349,8 @@
 
     /* Requirements:
     * Only owner can call this function.
-       @param_stauts to start or end sale .
-       PublicSale bool=true (remaining mintLimit of whiteListed users transfer to publicLimit.)
+    * @param_stauts to start or end sale.
+    * setPublicSale bool=true (remaining mintLimit of whiteListed users transfer to publicLimit.)
     */
     
     function setPuclicSale(bool _status) 
@@ -363,8 +361,8 @@
       publicSale = _status;
 
       if (publicSale == true) {
-            whiteMintBalance = whiteListedLimit - whitelistedMintedNFTs;
-            publicLimit += whiteMintBalance;
+            whiteNonMintBalance = whiteListedLimit - whitelistedMintedNFTs;
+            publicLimit += whiteNonMintBalance;
         }
           emit publicSaleEvent(msg.sender, _status);
      }
