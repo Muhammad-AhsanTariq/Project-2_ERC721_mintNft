@@ -49,6 +49,13 @@
     error MintingDisabled();
     error publicSaleStatus(string);
    
+    event mintAddressEvent(
+        address _to,
+        string  _name,
+        uint    _id,
+        string  _uri
+    );
+
     event AddedWhitelistAdmin(
         address whitelistedAddress,
         address updatedBy
@@ -143,6 +150,7 @@
             nftData[nftId]= nftInfo(nftId, name, _hash); 
             perAddressMinting[msg.sender] += 1;
             mintedNFTs += 1;
+            emit mintAddressEvent(to,name,nftId,_hash);
               }
         else {
                 revert perAddressMintLimitReached();
