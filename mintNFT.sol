@@ -133,7 +133,7 @@
         string memory name, 
         string memory _hash
         ) private 
-         mintStatusCheck{
+         mintStatusCheck {
         require(!paused(), "Pausable: paused");
 
         if(mintedNFTs < totalLimit) {
@@ -164,8 +164,7 @@
         string memory name, 
         string memory _hash
         ) public 
-        preSaleCheck
-        mintStatusCheck {
+        preSaleCheck {
         require(!paused(), "Pausable: paused");
 
         if (whitelistedMintedNFTs < whiteListedLimit) {
@@ -194,8 +193,7 @@
         string memory name, 
         string memory _hash) 
         public 
-        publicSaleCheck
-        mintStatusCheck {
+        publicSaleCheck {       
         require(!paused(), "Pausable: paused");     
         
         if (publicMintedNFTs < publicLimit) {
@@ -214,8 +212,7 @@
         uint  nftId, 
         string memory name, 
         string memory _hash
-        ) public
-        mintStatusCheck {
+        ) public {
         require(!paused(), "Pausable: paused");
         
     if(pltformMintindNFTs <= platformLimit) {
