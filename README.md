@@ -1,4 +1,4 @@
-## NFT Smart-Contract to mint NFTs using Public Sale Features
+## NFT Smart-Contract to mint NFTs using Public/WhiteListed/Admin access mint Features
 
 **Deployed on Polygon testnet**
 **Contract Address:** 0xA5791dFf489299774f00B7428bDd1750fdD9325a
