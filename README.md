@@ -1,6 +1,6 @@
-**NFT Smart-Contract to mint NFTs**
+## NFT Smart-Contract to mint NFTs using Public Sale Features
 
-## Deployed on Polgon testnet
+**Deployed on Polgon testnet**
 **Contract Address:** 0xA5791dFf489299774f00B7428bDd1750fdD9325a
 
 **NFT Contract Requirements**
