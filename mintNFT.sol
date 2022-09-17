@@ -1,4 +1,4 @@
-    // SPDX-License-Identifier: MIT
+    //SPDX-License-Identifier: MIT
     pragma solidity ^0.8.4;
     
     //importing from openzeppeline.
@@ -11,7 +11,7 @@
 
     contract ChimpsNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Pausable, Ownable {
     
-    //state variables
+    //State variables
 
     uint public totalLimit = 100;
     uint public mintLimit = 90;
@@ -48,7 +48,7 @@
     error publicMintLimit(string);
     error platformMintLimit(string);
     error MintingDisabled();
-    error NotwhitelistedAdmin();
+  
    
     event AddedWhitelistAdmin(
         address whitelistedAddress,
@@ -56,9 +56,9 @@
     );
 
       event WhitelistedUser(
-          address _sender, 
-          address _user, 
-          bool _status);
+        address _sender, 
+        address _user, 
+        bool _status);
 
     event RemovedWhitelistAdmin(
         address whitelistedAddress,
@@ -66,18 +66,19 @@
     );
 
     event publicSaleEvent(
-         address _sender, 
-         bool _status
-         );
+        address _sender, 
+        bool _status
+    );
          
     event updateUri(
-            address _sender,
-            string _uri
-            );
+        address _sender,
+        string _uri
+    );
 
     event addAdminEvent(
-            address _admin,
-            bool _status);
+        address _admin,
+        bool _status
+    );
 
     
     constructor() ERC721("ChimpsNFT", "CH1") {
@@ -149,7 +150,7 @@
             }
         }
         else {
-            revert totalMintLimit("Total minting limit is reached");
+                revert totalMintLimit("Total minting limit is reached");
         }
     }
     
@@ -363,4 +364,5 @@
         }
           emit publicSaleEvent(msg.sender, _status);
      }
+
     }
