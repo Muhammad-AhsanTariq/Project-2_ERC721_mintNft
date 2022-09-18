@@ -33,7 +33,9 @@
     string Name;
     string MetaDataHash;
     }
-
+ 
+   //*Key value pairs
+ 
     mapping(uint => nftInfo) public nftData;
     mapping(address => bool) public whiteListedUsers;
     mapping(address => uint) public perAddressMinting;
