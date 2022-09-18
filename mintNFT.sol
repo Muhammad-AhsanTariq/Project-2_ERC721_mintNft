@@ -91,7 +91,7 @@
          baseURI= "https://gateway.pinata.cloud/ipfs/";
     }        
   
-    //* mintStatusCheck() to stop miniting functions
+    //* mintStatusCheck() shows stop miniting functions
 
     modifier mintStatusCheck() {
          if (mintDisabled == true) {
@@ -100,7 +100,7 @@
         _;
     }
     
-    //* preSaleCheck() and publicSaleCheck() checks represent start or end preSale.
+    //* preSaleCheck() and publicSaleCheck() checks shows start or end preSale.
 
     modifier preSaleCheck() {
           if (publicSale == true){
@@ -173,8 +173,7 @@
         string memory _hash
         ) public 
         preSaleCheck {
-        require(!paused(), "Pausable: paused");
-
+     
         if (whitelistedMintedNFTs < whiteListedLimit) {
         if (whiteListedUsers[msg.sender]) {
             safeMint(to, nftId, name, _hash);
@@ -202,8 +201,7 @@
         string memory _hash) 
         public 
         publicSaleCheck {       
-        require(!paused(), "Pausable: paused");     
-        
+            
         if (publicMintedNFTs < publicLimit) {
             safeMint(to, nftId, name, _hash); 
             publicMintedNFTs += 1;
@@ -221,7 +219,6 @@
         string memory name, 
         string memory _hash
         ) public {
-        require(!paused(), "Pausable: paused");
         
     if(pltformMintindNFTs <= platformLimit) {
     if(whiteListedAdmins[msg.sender]) {
