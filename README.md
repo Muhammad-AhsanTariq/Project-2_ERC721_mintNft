@@ -3,7 +3,7 @@
 **Deployed on Polygon testnet**
 **Contract Address:** 0x1A21a63F3E20dE22b71935f6f55F3606e3920891
 
- ### NFT collection minted with ERC721 Smart Contract.
+ ### My NFT collection minted with ERC721 Smart Contract.
  - **Pinata IPFS is used to generate Metadata of NFT's**
  
  - **Opensea_Link:** https://testnets.opensea.io/collection/chimps
