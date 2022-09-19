@@ -1,7 +1,7 @@
 # NFT Smart-Contract to mint NFTs using Public/WhiteListed/Admin access mint Features
 
 **Deployed on Polygon testnet**
-**Contract Address:** 0x1A21a63F3E20dE22b71935f6f55F3606e3920891
+**Contract Address:** 0x3EBe075c10E5D0441F96f231641b8bC697B9Adf0
 
  ### My NFT collection minted with ERC721 Smart Contract.
  - **Pinata IPFS is used to generate Metadata of NFT's**
